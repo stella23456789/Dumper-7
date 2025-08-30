@@ -14,7 +14,7 @@ void Off::InSDK::ProcessEvent::InitPE()
 	void** Vft = *(void***)ObjectArray::GetByIndex(0).GetAddress();
 
 #if defined(_WIN64)
-	/* Primary, and more reliable, check for ProcessEvent */
+	/* Primary and more reliable, check for ProcessEvent */
 	auto IsProcessEvent = [](const uint8_t* FuncAddress, [[maybe_unused]] int32_t Index) -> bool
 	{
 		return FindPatternInRange({ 0xF7, -0x1, Off::UFunction::FunctionFlags, 0x0, 0x0, 0x0, 0x0, 0x04, 0x0, 0x0 }, FuncAddress, 0x400)
